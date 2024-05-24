@@ -158,9 +158,9 @@ export default function Home() {
         <div className="w-full flex flex-col gap-10 bl:px-5 my-20 mb-[100px]">
           <h1 className="font-semibold text-lg">All blog posts</h1>
           <div className='w-full h-auto flex flex-wrap
-          base:gap-x-[20px] bl:gap-x-[45px] !gap-y-[40px] base:justify-center tablet:justify-start items-start'>
+          base:gap-x-[20px] bl:gap-x-[45px] !gap-y-[40px] base:justify-center base:px-5 tablet:px-0 tablet:justify-start items-start'>
             {Data.map((data: any, index: number) => (
-              <Link href={`/blog/${data.URL}`} key={index} className='base:w-[330px] bl:w-[360px] cursor-pointer flex flex-col'>
+              <Link href={`/blog/${data.URL}`} key={index} className='base:w-full tablet:w-[330px] bl:w-[360px] cursor-pointer flex flex-col'>
                 <img src={data.coverImage} className="w-full base:h-[220px] bl:h-[220px]" alt='vef' />
                 <Card className="border-none px-0">
                   <CardHeader className="gap-1 px-0">
