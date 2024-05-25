@@ -38,23 +38,23 @@ const Nav = () => {
             </Link>
             <Link
               href="#"
-              className="mx-[-0.65rem] mt-[20px] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+              className="mx-[-0.65rem] mt-[20px] text-sm flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               Blog
             </Link>
             <Link
               href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+              className="mx-[-0.65rem] flex text-sm items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               Projects
             </Link>
             <Link
               href="#"
-              className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+              className="mx-[-0.65rem] flex text-sm items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               Github
             </Link>
-            <div className="flex items-center border-2 rounded-md w-full px-4 py-4 justify-between">
+            <div className="flex items-center border-2 rounded-md w-full px-4 py-4 justify-between my-4">
               <Label htmlFor="airplane-mode">Dark Mode</Label>
               <Switch id="airplane-mode" checked={theme==='dark'} onCheckedChange={(e) => {
                 if (e === true) {
