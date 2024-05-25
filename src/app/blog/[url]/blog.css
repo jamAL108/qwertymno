@@ -18,9 +18,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
   max-width: 90%;
+  width: 300px;
   margin-left: auto;
   margin-right: auto;
   height: auto;
+  max-height: 300px;
 }
 
 .markdown pre {
@@ -54,7 +56,7 @@
 .markdown h6 {
   font-weight: bold;
   white-space: nowrap;
-  font-family: 'BBPL', serif;
+  font-family: 'BBPR', serif;
   /* font-family: 'source-serif-pro , serif'; */
   /* font-family: "Source Serif 4", serif; */
 }
@@ -90,7 +92,7 @@
   letter-spacing: 0.6px;
   /* font-family: 'source-serif-pro , serif'; */
 
-  font-family: 'BBPL', serif;
+  font-family: 'BBPR', serif;
   /* font-family: "Source Serif 4", serif; */
 }
 
@@ -140,5 +142,6 @@
   .markdown ul,
   .markdown ol {
     font-size: 1.27rem;
+    font-weight: 100 !important;
   }
 }

@@ -85,3 +85,9 @@
     font-family: 'BBPL';
     src: url('/SSPL.otf');
   }
+
+  
+  @font-face {
+    font-family: 'BBPR';
+    src: url('/SSPR.otf');
+  }
