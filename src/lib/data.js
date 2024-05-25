@@ -30,7 +30,7 @@ const data=[
    },{
      title:"Easy way to deploy your flask app into vercel",
      date:"2024-05-25",
-     categories:["flask","vercel],
+     categories:["flask","vercel"],
      author:"Jamal Mydeen",
      excerts:"eploy your Flask apps effortlessly on Vercel with our simplified guide. Say goodbye to complex setups and hello to hassle-free hosting.",
      github: "https://raw.githubusercontent.com/jamAL108/connect/main/client/src/blogs/Easy-way-to-deploy-flask-app-into-vercel.md",
