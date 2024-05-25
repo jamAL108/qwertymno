@@ -27,6 +27,15 @@ const data=[
      github: "https://raw.githubusercontent.com/jamAL108/connect/main/client/src/blogs/Scope-of-var-let-const-in-Javascript.md",
      coverImage:"https://firebasestorage.googleapis.com/v0/b/blogs-8e84a.appspot.com/o/images%2Fpic3.png?alt=media&token=20bdf317-0883-46c1-a710-1486e8f758b6",
      URL:"Scope-of-var-let-const-in-Javascript.md"
+   },{
+     title:"Easy way to deploy your flask app into vercel",
+     date:"2024-05-25",
+     categories:["flask","vercel],
+     author:"Jamal Mydeen",
+     excerts:"eploy your Flask apps effortlessly on Vercel with our simplified guide. Say goodbye to complex setups and hello to hassle-free hosting.",
+     github: "https://raw.githubusercontent.com/jamAL108/connect/main/client/src/blogs/Easy-way-to-deploy-flask-app-into-vercel.md",
+     coverImage:"https://jvpehndoafryctlriuse.supabase.co/storage/v1/object/public/qwertymno/Group_1.png",
+     URL:"Easy way to deploy flask app into vercel.md"
    }
  ]
  export default data;
