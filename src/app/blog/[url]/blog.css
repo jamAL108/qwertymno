@@ -15,6 +15,8 @@
 }
 
 .markdown img {
+  margin-top: 10px;
+  margin-bottom: 10px;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -52,7 +54,9 @@
 .markdown h6 {
   font-weight: bold;
   white-space: nowrap;
-  font-family: 'source-serif-pro , serif';
+  font-family: 'BBPL' , serif;
+  /* font-family: 'source-serif-pro , serif'; */
+  /* font-family: "Source Serif 4", serif; */
 }
 
 .markdown h2 {
@@ -82,8 +86,12 @@
 .markdown ol {
   margin-top: 6;
   margin-bottom: 6;
-  font-size: 1.5rem;
-  font-family: 'source-serif-pro , serif';
+  font-size: 1.45rem;
+  letter-spacing: 0.6px;
+  /* font-family: 'source-serif-pro , serif'; */
+
+  font-family: 'BBPL' , serif;
+  /* font-family: "Source Serif 4", serif; */
 }
 
 .markdown blockquote {

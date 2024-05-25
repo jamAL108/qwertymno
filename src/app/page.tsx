@@ -161,7 +161,7 @@ export default function Home() {
           base:gap-x-[20px] bl:gap-x-[45px] !gap-y-[40px] base:justify-center base:px-5 tablet:px-0 tablet:justify-start items-start'>
             {Data.map((data: any, index: number) => (
               <Link href={`/blog/${data.URL}`} key={index} className='base:w-full tablet:w-[330px] bl:w-[360px] cursor-pointer flex flex-col'>
-                <img src={data.coverImage} className="w-full base:h-[220px] bl:h-[220px]" alt='vef' />
+                <img src={data.coverImage} className="w-full base:h-[210px] bl:h-[220px]" alt='vef' />
                 <Card className="border-none px-0">
                   <CardHeader className="gap-1 px-0">
                     <p className="text-[#6941C6] text-sm">{formatDate(data.date)}</p>
