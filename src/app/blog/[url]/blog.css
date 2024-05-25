@@ -54,7 +54,7 @@
 .markdown h6 {
   font-weight: bold;
   white-space: nowrap;
-  font-family: 'BBPL' , serif;
+  font-family: 'BBPL', serif;
   /* font-family: 'source-serif-pro , serif'; */
   /* font-family: "Source Serif 4", serif; */
 }
@@ -90,7 +90,7 @@
   letter-spacing: 0.6px;
   /* font-family: 'source-serif-pro , serif'; */
 
-  font-family: 'BBPL' , serif;
+  font-family: 'BBPL', serif;
   /* font-family: "Source Serif 4", serif; */
 }
 
@@ -132,3 +132,13 @@
   margin-bottom: 1rem;
 }
 
+
+
+@media screen and (max-width:1020px) {
+
+  .markdown p,
+  .markdown ul,
+  .markdown ol {
+    font-size: 1.27rem;
+  }
+}
