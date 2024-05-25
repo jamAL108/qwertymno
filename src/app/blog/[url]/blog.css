@@ -26,10 +26,11 @@
 }
 
 .markdown pre {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-left: 10px;
-  padding-top: 5px;
+  margin-top: 25px;
+  margin-bottom: 35px;
+  padding-left: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   overflow-x: hidden;
   background-color: #282C34;
   border-radius: .4rem;
@@ -44,7 +45,7 @@
 .markdown pre code {
   display: none;
   background-color: yellow;
-  color: rgb(209, 209, 209);
+  /* color: rgb(209, 209, 209); */
   overflow-y: auto !important;
   overflow-x: auto !important;
 }
@@ -75,6 +76,7 @@
   max-width: 100%;
   min-width: 100px;
   padding: 0;
+  font-size: 1rem;
 }
 
 .markdown {
@@ -133,7 +135,6 @@
   /* Equivalent to mt-8 in Tailwind CSS */
   margin-bottom: 1rem;
 }
-
 
 
 @media screen and (max-width:1020px) {

@@ -35,7 +35,7 @@ const data=[
      excerts:"eploy your Flask apps effortlessly on Vercel with our simplified guide. Say goodbye to complex setups and hello to hassle-free hosting.",
      github: "https://raw.githubusercontent.com/jamAL108/connect/main/client/src/blogs/Easy-way-to-deploy-flask-app-into-vercel.md",
      coverImage:"https://jvpehndoafryctlriuse.supabase.co/storage/v1/object/public/qwertymno/Group_1.png",
-     URL:"Easy way to deploy flask app into vercel.md"
+     URL:"Easy-way-to-deploy-flask-app-into-vercel.md"
    }
  ]
  export default data;
