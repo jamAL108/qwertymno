@@ -27,6 +27,8 @@ import { Button } from "@/components/ui/button"
 import { Label } from '@/components/ui/label';
 import { FaCircleUser } from "react-icons/fa6";
 import { Loader2 } from 'lucide-react'
+import { toast } from "sonner"
+import { Share2 } from 'lucide-react';
 
 const Slug = () => {
     const [content, setcontent] = useState<any>(null);
@@ -148,9 +150,24 @@ const Slug = () => {
                         </div>
                         <div className='w-full flex flex-col gap-10 bl:ml-[33%] my-14 base:px-4 bl:px-0'>
                             <div className='flex w-full flex-col gap-5'>
-                                <div className='w-full flex items-center gap-10'>
-                                    <p className="text-[#6941C6] text-sm">{info ? formatDate(info.created_at) : ''}</p>
-                                    <p className='flex items-center text-sm justify-center gap-1'><Eye className='text-muted-foreground h-5 w-5' /> {formatNumber(info.views + 1)}</p>
+                                <div className='w-full flex items-center justify-between gap-10'>
+                                    <div className='flex items-center gap-10'>
+                                        <p className="text-[#6941C6] text-sm">{info ? formatDate(info.created_at) : ''}</p>
+                                        <p className='flex items-center text-sm justify-center gap-1'><Eye className='text-muted-foreground h-5 w-5' /> {formatNumber(info.views + 1)}</p>
+                                    </div>
+                                    <Button
+                                        variant="outline"
+                                        className='rounded-full min-h-[50px]'
+                                        onClick={async () => {
+                                            await navigator.clipboard.writeText(`https://qwertymno.vercel.app/blog/${info.URL_prefix + '-' + info.id}`);
+                                            toast("Blog Link Copied", {
+                                                description: "Share knowledge with your friends",
+                                            })
+                                        }
+                                        }
+                                    >
+                                        <Share2 className='h-5 w-5 text-foreground' />
+                                    </Button>
                                 </div>
                                 <h1 className='text-3xl bl:w-[80%] font-bold'>{info ? info.title : ''}</h1>
                             </div>
