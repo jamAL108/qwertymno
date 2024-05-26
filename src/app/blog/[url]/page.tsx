@@ -17,16 +17,24 @@ import { ArrowUpRight } from 'lucide-react';
 import { Badge } from "@/components/ui/badge"
 import Link from 'next/link'
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { formatDate , formatNumber } from '@/utils'
+import { formatDate, formatNumber, timeAgo } from '@/utils'
 import SkeletonComp from './skeleton';
-import { getBlog } from '@/api';
+import { getBlog, addComment } from '@/api';
 import BlogNotFound from '@/components/blogNotFound'
 import { Eye } from 'lucide-react';
+import TextareaAutosize from 'react-textarea-autosize';
+import { Button } from "@/components/ui/button"
+import { Label } from '@/components/ui/label';
+import { FaCircleUser } from "react-icons/fa6";
+import { Loader2 } from 'lucide-react'
 
 const Slug = () => {
     const [content, setcontent] = useState<any>(null);
     const [error, setError] = useState<boolean>(false)
     const [info, setinfo] = useState<any>(null);
+    const [comment, setComment] = useState<string>('')
+
+    const [commentPush, setCommentPush] = useState<boolean>(false)
 
     const [otherBlog, setOtherBlog] = useState<any>(null)
     const params: any = useParams<{ url: string; }>()
@@ -69,6 +77,35 @@ const Slug = () => {
 
     if (error) {
         return <BlogNotFound />
+    }
+
+    const addCommentFunction = async () => {
+        let comments = info.comments
+        setCommentPush(true)
+        const newComment = {
+            comment,
+            date: new Date()
+        }
+        if (comments === null) {
+            comments = []
+            comments.push(newComment)
+        } else {
+            comments.unshift(newComment)
+        }
+        console.log(comments)
+        const result: any = await addComment(info.id, comments)
+        if (result.success === false) {
+            console.log("MEOW")
+            setComment('')
+            setCommentPush(false)
+        } else if (result.success === true) {
+            let temp = { ...info }
+            temp.comments = comments;
+            console.log(temp)
+            setinfo(temp)
+            setComment('')
+            setCommentPush(false)
+        }
     }
 
     return (
@@ -124,10 +161,50 @@ const Slug = () => {
                                 className="markdown max-w-[900px] text-foreground  !w-full"
                                 dangerouslySetInnerHTML={{ __html: content }}
                             />
-                            <div className='w-full flex items-center gap-7 mt-[50px]'>
+                            <div className='w-full flex items-center gap-7 mt-[30px]'>
                                 {info !== null && info.categories.map((badge: string, id: number) => (
                                     <Badge className='px-6 py-2.5 text-lg' key={id}>{badge}</Badge>
                                 ))}
+                            </div>
+                            <div className='w-full base:px-0 bl:px-5 py-2 flex flex-col gap-5 mt-[20px]'>
+                                <div className='w-full flex flex-col gap-3'>
+                                    <TextareaAutosize placeholder='Add a Comment..' value={comment} onChange={(e) => setComment(e.target.value)} className='w-full !resize-none text-lg bg-transparent font-500 break-words outline-none  placeholder:opacity-[0.6] border-b-2 pb-2' />
+                                    {comment.length !== 0 && commentPush === false && (
+                                        <div className='w-full flex justify-end items-center gap-3'>
+                                            <Button onClick={(e) => setComment('')} className='px-6 py-3 rounded-[40px]' variant="outline">Cancel</Button>
+                                            <Button onClick={(e) => {
+                                                addCommentFunction()
+                                            }} className='px-6 py-3 rounded-[40px]'>Comment</Button>
+                                        </div>
+                                    )}
+                                    {commentPush === true && (
+                                        <div className='w-full flex justify-center items-center'>
+                                            <Loader2 className="h-6 w-6 animate-spin text-foreground" />
+                                        </div>
+                                    )}
+                                </div>
+                                <div>
+                                    {info.comments === null ? (
+                                        <Label className='py-2 text-muted-foreground'>No comments Added Yet</Label>
+                                    ) : info.comments.length !== 0 && (
+                                        <div className='w-full flex flex-col gap-7 mt-[20px]'>
+                                            {info.comments.map((comm: any, idxx: number) => (
+                                                <div key={idxx} className='flex gap-3 w-full'>
+                                                    <FaCircleUser className='h-9 w-9 text-foreground' />
+                                                    <div className='flex flex-1 flex-col gap-1'>
+                                                        <div className='w-full flex items-center gap-3'>
+                                                            <p className='text-xs'>Unknown Person</p>
+                                                            <p className='text-xs text-muted-foreground'> {timeAgo(comm.date)}</p>
+                                                        </div>
+                                                        <h2 className='w-full text-sm max-w-[90%]'>
+                                                            {comm.comment}
+                                                        </h2>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
