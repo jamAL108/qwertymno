@@ -3,32 +3,40 @@ import html from "remark-html";
 import axios from "axios";
 
 
-export async function markdownToHtml(markdown:any) {
+export async function markdownToHtml(markdown: any) {
   const result = await remark().use(html).process(markdown);
   return result.toString();
 }
 
-export const formatDate = (inputDate: string): string => {
-  const date = new Date(inputDate);
+export function formatDate(isoString: string): string {
+  const date = new Date(isoString);
 
-  const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric'
-  };
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const months = [
+    'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+  ];
 
-  return date.toLocaleDateString('en-GB', options);
-};
+  const dayOfWeek = days[date.getUTCDay()];
+  const dayOfMonth = date.getUTCDate();
+  const month = months[date.getUTCMonth()];
+  const year = date.getUTCFullYear();
+
+  return `${dayOfWeek}, ${dayOfMonth} ${month} ${year}`;
+}
+
+export function formatNumber(number: number): string {
+  return number.toLocaleString();
+}
 
 
-export async function fetchAndStoreDataFromGitHubFolder(url:any) {
+export async function fetchAndStoreDataFromGitHubFolder(url: any) {
   try {
     const response = await axios.get(url);
     const markdownContent = response.data;
     console.log(markdownContent)
     return markdownContent;
-  } catch (error:any) {
+  } catch (error: any) {
     console.error('Error fetching data from GitHub:', error.message);
   }
 }
