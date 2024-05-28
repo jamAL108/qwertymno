@@ -47,6 +47,9 @@ dependencies:
   highlight.js:
     specifier: 11.9.0
     version: 11.9.0
+  highlightjs-copy:
+    specifier: ^1.0.5
+    version: 1.0.5
   lucide-react:
     specifier: ^0.379.0
     version: 0.379.0(react@18.3.1)
@@ -2509,6 +2512,10 @@ packages:
   /highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
+    dev: false
+
+  /highlightjs-copy@1.0.5:
+    resolution: {integrity: sha512-e7vXcq4HyMqXEw9omt8riYMxEGSanjY2bLQL91Jk0zGnqEhs/pO/6X4tC0PQEVkGBqUdYUyfr06V/VEfQZ7Pmg==}
     dev: false
 
   /html-void-elements@3.0.0:

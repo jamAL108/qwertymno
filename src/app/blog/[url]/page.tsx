@@ -29,14 +29,12 @@ import { FaCircleUser } from "react-icons/fa6";
 import { Loader2 } from 'lucide-react'
 import { toast } from "sonner"
 import { Share2 } from 'lucide-react';
-
 import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import python from 'highlight.js/lib/languages/python';
 import json from 'highlight.js/lib/languages/json';
 import 'highlight.js/styles/github-dark.css';
-
-
+import { CopyButtonPlugin } from './highlight-copy'
 
 const Slug = () => {
     const [content, setcontent] = useState<any>(null);
@@ -57,7 +55,10 @@ const Slug = () => {
 
     useEffect(() => {
         if (info !== null) {
-            hljs.highlightAll();
+            setTimeout(() => {
+                hljs.addPlugin(new CopyButtonPlugin())
+                hljs.highlightAll()
+            }, 100)
         }
     }, [info])
 
@@ -72,6 +73,7 @@ const Slug = () => {
         if (result.success === false) {
             setError(true)
         } else {
+            console.log(result.data.code)
             if (result.data.code === 'Javascript') {
                 console.log("JS")
                 hljs.registerLanguage('javascript', javascript)
