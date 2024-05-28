@@ -67,6 +67,12 @@ export function timeAgo(isoDateString: string): string {
 }
 
 
+export function extractUUID(input: string): string | null {
+  const regex = /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/;
+  const match = input.match(regex);
+  return match ? match[0] : null;
+}
+
 
 
 export default fetchAndStoreDataFromGitHubFolder;
