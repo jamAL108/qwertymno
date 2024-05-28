@@ -17,12 +17,12 @@ const Nav = () => {
   return (
     <div className='w-full flex justify-between items-center px-6 base:py-7 bl:py-5'>
       <div className='flex items-center gap-2 justify-center'>
-        <h2 className='text-[1.2rem] font-[500]'>Jamal Mydeen</h2>
+        <Link href={'/'} className='text-[1.2rem] font-[500]'>Jamal Mydeen</Link>
       </div>
       <div className='bl:flex base:hidden items-center justify-center gap-9'>
-        <p>Blog</p>
-        <p>Projects</p>
-        <p>Github</p>
+        <Link href='/'>Blog</Link>
+        <Link href='/'>Projects</Link>
+        <Link href='https://github.com/jamAL108'>Github</Link>
         <ModeToggle />
       </div>
       <Sheet>
@@ -30,26 +30,26 @@ const Nav = () => {
         <SheetContent side="left" className="flex flex-col z-[1000000]">
           <nav className="grid gap-2 text-lg font-medium">
             <Link
-              href="#"
+              href="/"
               className="flex items-center gap-2 text-lg font-semibold"
             >
               Jamal Mydeen
               <span className="sr-only">Jamal Mydeen</span>
             </Link>
             <Link
-              href="#"
+              href="/"
               className="mx-[-0.65rem] mt-[20px] text-sm flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               Blog
             </Link>
             <Link
-              href="#"
+              href='/'
               className="mx-[-0.65rem] flex text-sm items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               Projects
             </Link>
             <Link
-              href="#"
+              href='https://github.com/jamAL108'
               className="mx-[-0.65rem] flex text-sm items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
             >
               Github
