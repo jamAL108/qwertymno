@@ -120,7 +120,7 @@ td > code {
     right: 0.5em;
     width: 2rem;
     height: 2rem;
-    text-indent: -9999px; /* Hide the inner text */
+    text-indent: 9999px; /* Hide the inner text */
     color: var(--hljs-theme-color);
     border-radius: 0.25rem;
     /* border: 1px solid; */
@@ -128,6 +128,7 @@ td > code {
     background-color: var(--hljs-theme-background);
     transition: background-color 200ms ease, transform 200ms ease-out;
     overflow: hidden;
+    font-size: 0.8rem;
   }
   .hljs-copy-button:not([data-copied="true"])::before {
     content: "";
