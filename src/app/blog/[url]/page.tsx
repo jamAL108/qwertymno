@@ -73,8 +73,10 @@ const Slug = () => {
             setError(true)
         } else {
             if (result.data.code === 'Javascript') {
+                console.log("JS")
                 hljs.registerLanguage('javascript', javascript)
             } else if (result.data.code === 'python') {
+                console.log("py")
                 hljs.registerLanguage('javascript', javascript)
                 hljs.registerLanguage('python', python)
                 hljs.registerLanguage('json', json);
