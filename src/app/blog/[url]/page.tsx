@@ -30,6 +30,14 @@ import { Loader2 } from 'lucide-react'
 import { toast } from "sonner"
 import { Share2 } from 'lucide-react';
 
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import python from 'highlight.js/lib/languages/python';
+import json from 'highlight.js/lib/languages/json';
+import 'highlight.js/styles/github-dark.css';
+
+
+
 const Slug = () => {
     const [content, setcontent] = useState<any>(null);
     const [error, setError] = useState<boolean>(false)
@@ -40,11 +48,18 @@ const Slug = () => {
 
     const [otherBlog, setOtherBlog] = useState<any>(null)
     const params: any = useParams<{ url: string; }>()
+
     useEffect(() => {
         let PATH: any = params.url
         const uuidExtracted = extractUUID(PATH)
         getBlogFunction(uuidExtracted)
     }, [])
+
+    useEffect(() => {
+        if (info !== null) {
+            hljs.highlightAll();
+        }
+    }, [info])
 
     function extractUUID(input: string): string | null {
         const regex = /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/;
@@ -57,6 +72,13 @@ const Slug = () => {
         if (result.success === false) {
             setError(true)
         } else {
+            if (result.data.code === 'Javascript') {
+                hljs.registerLanguage('javascript', javascript)
+            } else if (result.data.code === 'python') {
+                hljs.registerLanguage('javascript', javascript)
+                hljs.registerLanguage('python', python)
+                hljs.registerLanguage('json', json);
+            }
             setinfo(result.data)
             setOtherBlog(result.others)
             func(result.data)
