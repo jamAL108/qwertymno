@@ -38,7 +38,7 @@ export default function Home() {
   return (
     <div className="flex-1 min-h-[100vh] flex justify-center">
       <div className="w-[min(1350px,90vw)] flex flex-col">
-        <Nav />
+        <Nav blog={true} />
         <div className="w-full py-3 flex justify-center items-center border-t-2 border-b-2">
 
         </div>

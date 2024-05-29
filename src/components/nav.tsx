@@ -12,8 +12,9 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { useTheme } from "next-themes"
 
-const Nav = () => {
-  const { theme , setTheme } = useTheme()
+const Nav: React.FC<any> = (props) => {
+  const { blog } = props;
+  const { theme, setTheme } = useTheme()
   return (
     <div className='w-full flex justify-between items-center px-6 base:py-7 bl:py-5'>
       <div className='flex items-center gap-2 justify-center'>
@@ -23,7 +24,9 @@ const Nav = () => {
         <Link href='/'>Blog</Link>
         <Link href='/'>Projects</Link>
         <Link href='https://github.com/jamAL108'>Github</Link>
-        <ModeToggle />
+        {
+          blog === true && <ModeToggle />
+        }
       </div>
       <Sheet>
         <SheetTrigger className='bl:hidden base:flex'><Menu className='text-foregroud h-7 w-7' /></SheetTrigger>
@@ -54,16 +57,18 @@ const Nav = () => {
             >
               Github
             </Link>
-            <div className="flex items-center border-2 rounded-md w-full px-4 py-4 justify-between my-4">
-              <Label htmlFor="airplane-mode">Dark Mode</Label>
-              <Switch id="airplane-mode" checked={theme==='dark'} onCheckedChange={(e) => {
-                if (e === true) {
-                  setTheme('dark')
-                } else {
-                  setTheme('light')
-                }
-              }} />
-            </div>
+            {blog === true &&
+              <div className="flex items-center border-2 rounded-md w-full px-4 py-4 justify-between my-4">
+                <Label htmlFor="airplane-mode">Dark Mode</Label>
+                <Switch id="airplane-mode" checked={theme === 'dark'} onCheckedChange={(e) => {
+                  if (e === true) {
+                    setTheme('dark')
+                  } else {
+                    setTheme('light')
+                  }
+                }} />
+              </div>
+            }
           </nav>
         </SheetContent>
       </Sheet>

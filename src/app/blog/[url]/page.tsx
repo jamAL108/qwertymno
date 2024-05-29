@@ -139,7 +139,7 @@ const Slug = () => {
         <div className="flex-1 flex justify-center overflow-y-hidden">
             <div className="w-[min(1350px,90vw)] flex flex-col overflow-y-hidden">
                 <div className='w-[min(1350px,90vw)] z-[10000] fixed top-0 bg-background'>
-                    <Nav />
+                    <Nav blog={false} />
                 </div>
                 {content === null ? (
                     <SkeletonComp />

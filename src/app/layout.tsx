@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] });
 import { Toaster } from "@/components/ui/sonner"
 
+
+
+
 export const metadata: Metadata = {
   title: "Jamal Mydeen",
   description: "Blog site",
@@ -30,12 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body  className={inter.className}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
+          disableTransitionOnChange
         >
           {children}
           <Toaster />

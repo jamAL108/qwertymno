@@ -6,7 +6,6 @@ import { extractUUID } from '@/utils'
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 
@@ -63,11 +62,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
-        <html lang="en">
+        <html lang="en" className='dark' style={{ colorScheme: 'dark' }}>
             <body className={inter.className}>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
                     {children}
+                </ThemeProvider>
             </body>
         </html>
     );
