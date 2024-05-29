@@ -53,15 +53,6 @@ const Slug = () => {
         getBlogFunction(uuidExtracted)
     }, [])
 
-    useEffect(() => {
-        if (info !== null) {
-            setTimeout(() => {
-                hljs.addPlugin(new CopyButtonPlugin())
-                hljs.highlightAll()
-            }, 100)
-        }
-    }, [info])
-
     function extractUUID(input: string): string | null {
         const regex = /[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}/;
         const match = input.match(regex);
@@ -77,11 +68,19 @@ const Slug = () => {
             if (result.data.code === 'Javascript') {
                 console.log("JS")
                 hljs.registerLanguage('javascript', javascript)
+                setTimeout(() => {
+                    hljs.addPlugin(new CopyButtonPlugin())
+                    hljs.highlightAll()
+                }, 100)
             } else if (result.data.code === 'python') {
                 console.log("py")
                 hljs.registerLanguage('javascript', javascript)
                 hljs.registerLanguage('python', python)
-                hljs.registerLanguage('json', json);
+                hljs.registerLanguage('json', json)
+                setTimeout(() => {
+                    hljs.addPlugin(new CopyButtonPlugin())
+                    hljs.highlightAll()
+                }, 100)
             }
             setinfo(result.data)
             setOtherBlog(result.others)
@@ -206,7 +205,7 @@ const Slug = () => {
                             />
                             <div className='w-full flex items-center gap-7 mt-[30px]'>
                                 {info !== null && info.categories.map((badge: string, id: number) => (
-                                    <Badge className='px-6 py-2.5 text-lg' key={id}>{badge}</Badge>
+                                    <Badge className='px-6 py-2.5 text-lg select-none' key={id}>{badge}</Badge>
                                 ))}
                             </div>
                             <div className='w-full base:px-0 bl:px-5 py-2 flex flex-col gap-5 mt-[20px]'>
