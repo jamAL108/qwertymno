@@ -19,18 +19,31 @@ import SkeletonComp from './skeleton';
 export default function Home() {
   const [blogData, setBlogData] = useState<any>(null)
   const [loader, setLoader] = useState<boolean>(true)
+  const [featuredBlogs, setFeaturedBlogs] = useState<any>(false)
 
   useEffect(() => {
     getblogFunction()
   }, [])
 
   const getblogFunction = async () => {
-    const result = await getAllBlogs()
+    const result: any = await getAllBlogs()
     console.log(result)
     if (result.success === false) {
       setLoader(false)
     } else {
-      setBlogData(result.data)
+      let blogs = [...result.data]
+      const trueArray: any = [];
+      const falseArray: any = [];
+
+      blogs.forEach(item => {
+        if (item.features) {
+          trueArray.push(item);
+        } else {
+          falseArray.push(item);
+        }
+      });
+      setFeaturedBlogs(trueArray)
+      setBlogData(falseArray)
       setLoader(false)
     }
   }
@@ -47,17 +60,18 @@ export default function Home() {
             <h1 className="font-semibold text-lg">Featured blog posts</h1>
             <div className="w-full flex base:gap-5 bl:gap-12 base:flex-col bl:flex-row justify-center">
               <div className="base:w-full bl:w-[45%] flex flex-col">
-                <img src='/images/dummy1.png' className="w-full base:h-[190px] bl:h-[210px]" alt='vef' />
+                <img src={featuredBlogs[0].coverImage} className="w-full base:h-[190px] bl:h-[210px]" alt='vef' />
                 <Card className="border-none px-0">
                   <CardHeader className="px-0 gap-1">
-                    <p className="text-[#6941C6]">Sunday , 1 Jan 2023</p>
-                    <CardTitle className="flex items-center justify-between">UX review presentations <ArrowUpRight className="h-8 w-8 text-foreground" /></CardTitle>
-                    <CardDescription className="!mr-[70px]">How do you create compelling presentations that wow your colleagues
-                      and impress your managers?</CardDescription>
+                    <p className="text-[#6941C6]">{formatDate(featuredBlogs[0].created_at)}</p>
+                    <CardTitle className="flex items-center justify-between leading-[30px]">{featuredBlogs[0].title} <Link href={`/blog/${featuredBlogs[0].URL_prefix + '-' + featuredBlogs[0].id}`}>
+                    <ArrowUpRight  className="h-8 w-8 text-foreground cursor-pointer" />
+                    </Link></CardTitle>
+                    <CardDescription className="!mr-[70px]">{featuredBlogs[0].excerts}</CardDescription>
                     <div className="flex items-center gap-4 py-2">
-                      <Badge>Design</Badge>
-                      <Badge>Research</Badge>
-                      <Badge>Badge</Badge>
+                      {featuredBlogs[0].categories.map((badge: string, id: number) => (
+                        <Badge key={id}>{badge}</Badge>
+                      ))}
                     </div>
                   </CardHeader>
                 </Card>

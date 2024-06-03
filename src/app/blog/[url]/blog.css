@@ -90,6 +90,11 @@
   font-weight: 500;
 }
 
+.markdown li{
+  margin-top: 5px;
+  margin-bottom:5px;
+}
+
 .markdown p,
 .markdown ul,
 .markdown ol {

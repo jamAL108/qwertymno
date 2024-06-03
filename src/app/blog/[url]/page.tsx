@@ -197,7 +197,7 @@ const Slug = () => {
                                 <h1 className='text-3xl bl:w-[80%] font-bold'>{info ? info.title : ''}</h1>
                             </div>
                             <div className='w-full flex justify-center items-center'>
-                                <img src={info ? info.coverImage : ''} alt="dwef" className='base:w-full bl:w-[55%] base:h-[220px] bl:h-[300px] border-2 rounded-md' />
+                                <img src={info ? info.coverImage : ''} alt="dwef" className='base:w-full bl:w-auto base:h-[220px] bl:h-[300px] border-2 rounded-md' />
                             </div>
                             <div
                                 className="markdown max-w-[900px] text-foreground  !w-full"
