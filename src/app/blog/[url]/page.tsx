@@ -173,7 +173,7 @@ const Slug = () => {
                                 </div>
                             </ScrollArea>
                         </div>
-                        <div className='w-full flex flex-col gap-10 bl:ml-[33%] my-14 base:px-4 bl:px-0'>
+                        <div className='w-full flex flex-col gap-10 bl:ml-[33%] my-14 base:px-3 bl:px-0'>
                             <div className='flex w-full flex-col gap-5'>
                                 <div className='w-full flex items-center justify-between gap-10'>
                                     <div className='flex items-center gap-10'>
