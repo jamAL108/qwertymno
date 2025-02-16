@@ -137,8 +137,8 @@ const Slug = () => {
 
     return (
         <div className="flex-1 flex justify-center overflow-y-hidden">
-            <div className="w-[min(1350px,90vw)] flex flex-col overflow-y-hidden">
-                <div className='w-[min(1350px,90vw)] z-[10000] fixed top-0 bg-background'>
+            <div className="w-[min(1400px,90vw)] flex flex-col overflow-y-hidden">
+                <div className='w-[min(1400px,90vw)] z-[10000] fixed top-0 bg-background'>
                     <Nav blog={false} />
                 </div>
                 {content === null ? (
@@ -156,7 +156,7 @@ const Slug = () => {
                                                     <img src={blog.coverImage} className="w-full h-[220px]" alt='vef' />
                                                     <Card className="border-none px-0">
                                                         <CardHeader className="gap-1 px-0">
-                                                            <p className="text-[#6941C6] text-sm">{formatDate(blog.created_at)}</p>
+                                                            <p className="text-blue-600 text-sm">{formatDate(blog.created_at)}</p>
                                                             <CardTitle className="text-xl">{blog.title}</CardTitle>
                                                             <CardDescription>{blog.excerts}</CardDescription>
                                                             <div className="flex items-center gap-4 py-2">
@@ -173,11 +173,11 @@ const Slug = () => {
                                 </div>
                             </ScrollArea>
                         </div>
-                        <div className='w-full flex flex-col gap-10 bl:ml-[33%] my-14 base:px-3 bl:px-0'>
+                        <div className='w-full flex flex-col gap-10 bl:ml-[32%] my-14 base:px-3 bl:px-0'>
                             <div className='flex w-full flex-col gap-5'>
                                 <div className='w-full flex items-center justify-between gap-10'>
                                     <div className='flex items-center gap-10'>
-                                        <p className="text-[#6941C6] text-sm">{info ? formatDate(info.created_at) : ''}</p>
+                                        <p className="text-blue-600 text-sm">{info ? formatDate(info.created_at) : ''}</p>
                                         <p className='flex items-center text-sm justify-center gap-1'><Eye className='text-muted-foreground h-5 w-5' /> {formatNumber(info.views + 1)}</p>
                                     </div>
                                     <Button
