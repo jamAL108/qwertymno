@@ -35,6 +35,10 @@ import python from 'highlight.js/lib/languages/python';
 import json from 'highlight.js/lib/languages/json';
 import 'highlight.js/styles/github-dark.css';
 import { CopyButtonPlugin } from './highlight-copy'
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import ResizableImage from '@/components/image-resizable'
+
 
 const Slug = () => {
     const [content, setcontent] = useState<any>(null);
@@ -152,8 +156,8 @@ const Slug = () => {
                                     {otherBlog !== null && otherBlog.map((blog: any, index: number) => {
                                         if (blog.id !== info.id) {
                                             return (
-                                                <Link href={`/blog/${blog.URL_prefix + '-' + blog.id}`} key={index} className='w-[360px] cursor-pointer flex flex-col'>
-                                                    <img src={blog.coverImage} className="w-full h-[220px]" alt='vef' />
+                                                <Link href={`/blog/${blog.URL_prefix + '-' + blog.id}`} key={index} className='w-[95%] cursor-pointer flex flex-col'>
+                                                    <img src={blog.coverImage} className="w-full h-[220px] object-contain" alt='vef' />
                                                     <Card className="border-none px-0">
                                                         <CardHeader className="gap-1 px-0">
                                                             <p className="text-blue-600 text-sm">{formatDate(blog.created_at)}</p>
@@ -173,7 +177,7 @@ const Slug = () => {
                                 </div>
                             </ScrollArea>
                         </div>
-                        <div className='w-full flex flex-col gap-10 bl:ml-[32%] my-14 base:px-3 bl:px-0'>
+                        <div className='w-full flex flex-col gap-10 bl:ml-[min(420px,30%)] my-14 base:px-3 bl:px-0'>
                             <div className='flex w-full flex-col gap-5'>
                                 <div className='w-full flex items-center justify-between gap-10'>
                                     <div className='flex items-center gap-10'>
@@ -199,10 +203,21 @@ const Slug = () => {
                             <div className='w-full flex justify-center items-center'>
                                 <img src={info ? info.coverImage : ''} alt="dwef" className='base:w-full bl:w-auto base:h-[220px] bl:h-[300px] border-2 rounded-md' />
                             </div>
-                            <div
-                                className="markdown max-w-[900px] text-foreground  !w-full"
-                                dangerouslySetInnerHTML={{ __html: content }}
-                            />
+                            <div className='markdown max-w-[900px] leading-relaxed text-foreground  !w-full'>
+                            <ReactMarkdown rehypePlugins={[rehypeRaw]}
+                                components={{
+                                    h1: ({ node, ...props }) => <h1 className="text-2xl font-bold mt-4 mb-2" {...props} />,
+                                    h2: ({ node, ...props }) => <h2 className="text-xl font-semibold mt-3 mb-2" {...props} />,
+                                    p: ({ node, ...props }) => <p className="text-base leading-relaxed my-2" {...props} />,
+                                    a: ({ node, ...props }) => <a className="text-blue-600 underline" {...props} />,
+                                img: ({ node, ...props }) => (
+                                    <ResizableImage src={props.src}/>
+                                ) 
+                                }}
+                            >
+                            {content}
+                            </ReactMarkdown>
+                            </div>
                             <div className='w-full flex items-center gap-7 mt-[30px]'>
                                 {info !== null && info.categories.map((badge: string, id: number) => (
                                     <Badge className='px-6 py-2.5 text-lg select-none' key={id}>{badge}</Badge>

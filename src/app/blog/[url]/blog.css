@@ -1,159 +1,105 @@
+Sticky Header
 .stickyy {
-  position: -webkit-sticky;
-  /* Safari */
   position: sticky;
   top: 0;
   z-index: 100000;
 }
 
+/* Code Styling */
 .markdown code {
-  /* color: hsl(var(--foreground)); */
   background-color: hsl(var(--accent));
   border-radius: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 2px 6px;
   font-family: "Source Code Pro", monospace;
-  font-optical-sizing: auto;
   font-weight: 400;
-  font-style: normal;
-}
-
-.markdown img {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  max-width: 90%;
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  height: auto;
-  max-height: 300px;
 }
 
 .markdown pre {
-  margin-top: 25px;
-  margin-bottom: 35px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  overflow-x: hidden;
+  margin: 20px 10px;
+  padding: 12px;
+  overflow-x: auto;
   background-color: hsl(var(--codeblock));
-  border-radius: .4rem;
-  margin-left: 10px;
-}
-
-.markdown mark {
-  background-color: yellow;
-  border-radius: 4px;
-}
-
-.markdown pre code {
-  display: none;
-  background-color: yellow;
-  overflow-y: auto !important;
-  overflow-x: auto !important;
-}
-
-/* .markdown h2, */
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
-  font-weight: bold;
-  white-space: nowrap;
-  font-family: 'BBPR', serif;
-  /* font-family: 'source-serif-pro , serif'; */
-  /* font-family: "Source Serif 4", serif; */
-}
-
-.markdown h2 {
-  font-size: 1.8rem;
-  font-weight: 600;
+  border-radius: 6px;
 }
 
 .markdown pre code {
   display: block;
   background: none;
   white-space: pre;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: scroll;
-  max-width: 100%;
-  min-width: 100px;
-  padding: 0;
   font-size: 1rem;
 }
 
+/* Image Styling */
+/* .markdown img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+} */
 
+
+/* Highlighted Text */
+.markdown mark {
+  background-color: yellow;
+  border-radius: 4px;
+}
+
+/* Headings */
+.markdown h2, .markdown h3, .markdown h4, .markdown h5, .markdown h6 {
+  font-weight: bold;
+  /* white-space: nowrap; */
+  font-family: 'BBPR', serif;
+  word-wrap: break-word; /* Ensures long words break */
+  overflow-wrap: break-word;
+}
+
+.markdown h2 {
+  margin-top: 50px !important;
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  /* margin-top: 3rem; */
+  margin-bottom: 1rem;
+}
+
+
+
+.markdown h3 {
+  font-size: 1.35rem;
+  line-height: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* General Text Styling */
 .markdown {
   font-size: 1.08rem;
   line-height: 1.625;
   font-weight: 500;
 }
 
-.markdown li{
-  margin-top: 5px;
-  margin-bottom:5px;
-}
-
-.markdown p,
-.markdown ul,
-.markdown ol {
-  margin-top: 6;
-  margin-bottom: 6;
-  font-size: 1.45rem;
+.markdown p, .markdown ul, .markdown ol {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 1.35rem;
   letter-spacing: 0.6px;
-  /* font-family: 'source-serif-pro , serif'; */
-
   font-family: 'BBPR', serif;
-  /* font-family: "Source Serif 4", serif; */
 }
 
+.markdown li {
+  margin: 5px 0;
+}
+
+/* Blockquote Styling */
 .markdown blockquote {
-  border-left: 2px solid grey;
+  border-left: 3px solid grey;
   padding-left: 1.1rem;
-  margin-left: 0rem;
-  width: 100%;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  margin: 15px 0;
   color: hsl(var(--muted-foreground));
 }
 
-
-
-
-.markdown h2 {
-  max-width: 100%;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 1.75rem;
-  /* 30px */
-  line-height: 1.375;
-  line-height: 2.25rem;
-  /* 36px */
-  margin-top: 3rem;
-  /* Equivalent to mt-12 in Tailwind CSS */
-  margin-bottom: 1rem;
-}
-
-.markdown h3 {
-  font-size: 1.4rem;
-  /* 24px */
-  line-height: 2rem;
-  /* 32px */
-  margin-top: 2rem;
-  /* Equivalent to mt-8 in Tailwind CSS */
-  margin-bottom: 1rem;
-}
-
-
-@media screen and (max-width:1020px) {
-
-  .markdown p,
-  .markdown ul,
-  .markdown ol {
+/* Responsive Styling */
+@media screen and (max-width: 1020px) {
+  .markdown p, .markdown ul, .markdown ol {
     font-size: 1.27rem;
-    
   }
 }
